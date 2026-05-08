@@ -35,15 +35,7 @@
 
       <div class="upload-layout">
 
-        <!-- Email Panel - Left Side -->
-        <div class="email-panel">
-          <h3>Email Notification</h3>
-          <label for="email-content">Compose weekly email:</label>
-          <textarea id="email-content" placeholder="Write your weekly menu announcement..."></textarea>
-          <button type="button" id="send-email-btn">Send to Subscribers</button>
-        </div>
-
-        <!-- Menu Upload Grid - Center -->
+        <!-- Menu Upload Grid - 2 columns -->
         <div class="menu-upload-grid">
 
           <!-- Tuesday -->
@@ -76,40 +68,6 @@
               <div class="field-group">
                 <label for="dessert-tue">Desserts</label>
                 <input type="text" id="dessert-tue" name="dessert-tue" placeholder="Enter desserts...">
-              </div>
-            </div>
-          </div>
-
-          <!-- Wednesday -->
-          <div class="day-card">
-            <div class="day-header">
-              <h3>Wednesday</h3>
-              <input type="date" id="date-wednesday" name="date-wednesday">
-              <label class="closed-checkbox">
-                <input type="checkbox" id="closed-wed" name="closed-wed">
-                <span>Closed</span>
-              </label>
-            </div>
-            <div class="day-fields">
-              <div class="field-group">
-                <label for="entree-wed">Entree</label>
-                <input type="text" id="entree-wed" name="entree-wed" placeholder="Enter entree...">
-              </div>
-              <div class="field-group">
-                <label for="soup-wed">Soups</label>
-                <input type="text" id="soup-wed" name="soup-wed" placeholder="Enter soups...">
-              </div>
-              <div class="field-group">
-                <label for="salad-wed">Salads</label>
-                <input type="text" id="salad-wed" name="salad-wed" placeholder="Enter salads...">
-              </div>
-              <div class="field-group">
-                <label for="side-wed">Sides</label>
-                <input type="text" id="side-wed" name="side-wed" placeholder="Enter sides...">
-              </div>
-              <div class="field-group">
-                <label for="dessert-wed">Desserts</label>
-                <input type="text" id="dessert-wed" name="dessert-wed" placeholder="Enter desserts...">
               </div>
             </div>
           </div>
@@ -149,7 +107,7 @@
           </div>
         </div>
 
-        <!-- WEEK STATUS (NEW SECTION) -->
+        <!-- Week Status Section -->
         <div class="week-status">
           <h3>Week Status</h3>
           <div class="week-status-options">
@@ -172,19 +130,41 @@
           </div>
         </div>
 
-        <!-- Past Menu Panel - Right Side -->
-        <div class="past-menu-panel">
-          <h3>Past Menus</h3>
-          <div class="past-menu-list">
-            <div class="past-menu-item">Week of April 28, 2025</div>
-            <div class="past-menu-item">Week of April 21, 2025</div>
-            <div class="past-menu-item">Week of April 14, 2025</div>
-            <div class="past-menu-item">Week of April 7, 2025</div>
-            <div class="past-menu-item">Week of March 31, 2025</div>
+        <!-- Bottom Panels Container - Email and Past Menus side by side -->
+        <div class="bottom-panels">
+
+          <!-- Email Notification Panel - Larger form -->
+          <div class="email-panel">
+            <h3>Email Notification</h3>
+            <label for="email-content">Compose weekly email:</label>
+            <textarea id="email-content" placeholder="Write your weekly menu announcement here...&#10;&#10;Example:&#10;This week at The LunchBox...&#10;&#10;Tuesday: [Entree]&#10;Thursday: [Entree]&#10;&#10;See you soon!"></textarea>
+            <button type="button" id="send-email-btn">Send to Subscribers</button>
           </div>
+
+          <div class="past-menu-panel">
+            <h3>Past Menus</h3>
+            <div class="past-menu-list">
+              <div class="past-menu-item">Week of April 28, 2025</div>
+              <div class="past-menu-item">Week of April 21, 2025</div>
+              <div class="past-menu-item">Week of April 14, 2025</div>
+              <div class="past-menu-item">Week of April 7, 2025</div>
+              <div class="past-menu-item">Week of March 31, 2025</div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Action Buttons -->
+        <!--
+          Action Buttons
+          
+          TODO: Preview Menu Button Implementation
+          
+          When the "Preview Menu" button is clicked:
+          
+          1. Gather all form data (dates, menu items, closed status) from firebase
+          2. Create a preview that matches the public menu page layout
+          
+        -->
         <div class="upload-actions">
           <button type="button" class="btn-secondary" id="preview-btn">Preview Menu</button>
           <button type="button" class="btn-primary" id="publish-btn">Publish Menu</button>
@@ -196,8 +176,9 @@
 
   <footer>
     <div class="footer-content">
-      <p>The LunchBox Admin Panel - For authorized users only</p>
+      <p>The LunchBox Admin Panel</p>
       <p><a href="index.html">View Public Site</a></p>
+      <p><a href="mailto:info@sictc.edu">Contact Us</a></p>
     </div>
   </footer>
 

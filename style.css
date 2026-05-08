@@ -341,14 +341,15 @@ main {
 }
 
 /* ============================================
-   MENU PAGE - CENTERED 3 COLUMN GRID
+   MENU PAGE - CENTERED 2 COLUMN GRID
+   (Wednesday removed - now Tuesday & Thursday only)
    ============================================ */
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-lg);
-  max-width: 1100px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -663,28 +664,36 @@ main {
 }
 
 /* ============================================
-   FOOTER
+   FOOTER (Compact single-line layout)
+   - Simplified design with inline elements
+   - Contact Us link included inline
    ============================================ */
 
 footer {
   background-color: var(--color-blue);
   color: var(--color-white);
   text-align: center;
-  padding: var(--space-lg) var(--space-md);
+  padding: var(--space-sm) var(--space-md);
 }
 
 .footer-content {
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+/* Separator dot between footer items */
+.footer-content span.separator {
+  color: var(--color-green-light);
 }
 
 footer p {
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: 0.8rem;
+  line-height: 1.4;
   margin: 0;
 }
 
@@ -698,9 +707,8 @@ footer a:hover {
 }
 
 footer img {
-  height: 40px;
+  height: 28px;
   width: auto;
-  margin-top: var(--space-sm);
   opacity: 0.9;
 }
 /* ============================================
@@ -730,31 +738,38 @@ footer img {
   margin: 0;
 }
 
-/* MAIN LAYOUT */
+/* 
+   MAIN LAYOUT - Vertical stack layout
+   Menu cards on top, then week status, then bottom panels (email + past menus)
+   Changed from 3-column grid to vertical flexbox for better content flow
+*/
 .upload-layout {
-  display: grid;
-  grid-template-columns: 250px 1fr 280px;
-  grid-template-areas:
-    "email menu past"
-    "email status past"
-    "actions actions actions";
+  display: flex;
+  flex-direction: column;
   gap: var(--space-lg);
-  align-items: start;
 }
 
 /* ============================================
-   EMAIL PANEL (LEFT)
+   BOTTOM PANELS CONTAINER
+   Email Notification and Past Menus side by side below the menu grid
+   ============================================ */
+
+.bottom-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+/* ============================================
+   EMAIL PANEL (BOTTOM LEFT - larger form)
    ============================================ */
 
 .email-panel {
-  grid-area: email;
   background-color: var(--color-white);
   border-radius: var(--radius-md);
   padding: var(--space-lg);
   box-shadow: var(--shadow-md);
   border: 2px solid var(--color-blue);
-  position: sticky;
-  top: 100px;
 }
 
 .email-panel h3 {
@@ -767,12 +782,13 @@ footer img {
 
 .email-panel textarea {
   width: 100%;
-  height: 200px;
-  padding: var(--space-sm);
+  height: 280px; /* Larger textarea for composing emails */
+  padding: var(--space-md);
   border: 1px solid var(--color-blue);
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 1rem;
+  line-height: 1.6;
   resize: vertical;
   margin-bottom: var(--space-sm);
 }
@@ -807,14 +823,16 @@ footer img {
 }
 
 /* ============================================
-   MENU GRID (CENTER)
+   MENU GRID (TOP - 2 columns for Tuesday & Thursday)
+   Wednesday removed per bossman feedback
    ============================================ */
 
 .menu-upload-grid {
-  grid-area: menu;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /* DAY CARDS */
@@ -923,16 +941,18 @@ footer img {
 }
 
 /* ============================================
-   WEEK STATUS (CENTER UNDER GRID)
+   WEEK STATUS (BELOW MENU GRID)
    ============================================ */
 
 .week-status {
-  grid-area: status;
   background-color: var(--color-white);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   border: 2px solid var(--color-blue);
   padding: var(--space-md);
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .week-status h3 {
@@ -962,18 +982,15 @@ footer img {
 }
 
 /* ============================================
-   PAST MENU PANEL (RIGHT)
+   PAST MENU PANEL (BOTTOM RIGHT)
    ============================================ */
 
 .past-menu-panel {
-  grid-area: past;
   background-color: var(--color-white);
   border-radius: var(--radius-md);
   padding: var(--space-lg);
   box-shadow: var(--shadow-md);
   border: 2px solid var(--color-blue);
-  position: sticky;
-  top: 100px;
 }
 
 .past-menu-panel h3 {
@@ -1011,11 +1028,9 @@ footer img {
    ============================================ */
 
 .upload-actions {
-  grid-area: actions;
   display: flex;
   justify-content: center;
   gap: var(--space-md);
-  margin-top: var(--space-lg);
   padding-top: var(--space-lg);
   border-top: 2px solid rgba(26, 58, 92, 0.1);
 }
@@ -1053,28 +1068,20 @@ footer img {
 }
 
 /* ============================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN (Admin page)
    ============================================ */
 
-@media (max-width: 1200px) {
-  .upload-layout {
+@media (max-width: 800px) {
+  .menu-upload-grid {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "menu"
-      "status"
-      "email"
-      "past"
-      "actions";
+    max-width: 400px;
   }
   
-  .email-panel,
-  .past-menu-panel {
-    position: static;
+  .week-status {
+    max-width: 400px;
   }
-}
-
-@media (max-width: 768px) {
-  .menu-upload-grid {
+  
+  .bottom-panels {
     grid-template-columns: 1fr;
   }
 }
